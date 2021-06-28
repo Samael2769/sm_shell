@@ -1,0 +1,5 @@
+.vscode/
+tester/
+*.o
+*.a
+sm_shell

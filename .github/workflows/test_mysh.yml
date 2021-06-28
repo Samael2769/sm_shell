@@ -1,0 +1,39 @@
+name: test_mysh
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  unit_tests:
+    name: unit_tests
+    container: epitechcontent/epitest-docker
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: make
+      run: make
+
+    - name: unitest
+      run: make tests_run
+
+  bash_test:
+    container: epitechcontent/epitest-docker
+  
+    name: bash_test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: make
+      run: make
+
+    - name: tests_bash
+      run: tests/test_minishell2.sh
